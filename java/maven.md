@@ -80,6 +80,8 @@ OS name: "windows 10", version: "10.0", arch: "amd64", family: "windows"
 </profiles>
 ```
 
+使用`mvn help:system`可以测试是否可以连接到阿里云仓库
+
 ## 在idea中配置maven
 
 ### 3.1 在Build Tools下的Maven设置maven的安装目录，maven的配置文件及maven的本地仓库
