@@ -5,8 +5,6 @@ vue2不再使用new Vue({el: '#app'})的方式实例化一个实例，而是采�
 ## 插槽
 
 
-
-
 ```vue
 <WelcomeItem>
     <template #icon>
@@ -35,3 +33,14 @@ vue2不再使用new Vue({el: '#app'})的方式实例化一个实例，而是采�
   </div>
 </template>
 ```
+
+## watch和watchEffect的区别
+
+
+## watch和computed的区别
+
+
+## 父组件和子组件的生命周期
+
+
+## Vue3相对于Vue2有哪些改变的地方
