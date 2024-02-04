@@ -1,0 +1,1752 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "",
+      "version": ""
+    },
+    "host": "127.0.0.1:8888",
+    "basePath": "/api",
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/operation/v1/collection": {
+        "get": {
+          "summary": "收藏列表",
+          "operationId": "getCollectionList",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/GetCollectionListResp"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "groupId",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "bizType",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection"
+          ]
+        },
+        "post": {
+          "summary": "新建收藏",
+          "operationId": "addCollection",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AddCollectionReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection"
+          ]
+        }
+      },
+      "/operation/v1/collection/group": {
+        "get": {
+          "summary": "收藏列表分组",
+          "operationId": "getCollectionGroupList",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/GetCollectionGropListResp"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "name",
+              "in": "query",
+              "required": false,
+              "type": "string"
+            },
+            {
+              "name": "visibility",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "bizType",
+              "in": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "creatorId",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection_group"
+          ]
+        },
+        "post": {
+          "summary": "新建收藏分组",
+          "operationId": "addCollectionGroup",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AddCollectionGroup"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection_group"
+          ]
+        }
+      },
+      "/operation/v1/collection/group/{id}": {
+        "delete": {
+          "summary": "删除收藏分组",
+          "operationId": "deleteCollectionGroup",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeleteCollectionGroup"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection_group"
+          ]
+        },
+        "put": {
+          "summary": "修改收藏分组",
+          "operationId": "updateCollectionGroup",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UpdateCollectionGroup"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection_group"
+          ]
+        }
+      },
+      "/operation/v1/collection/{id}": {
+        "delete": {
+          "summary": "取消收藏",
+          "operationId": "deleteCollection",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeleteCollectionReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "collection"
+          ]
+        }
+      },
+      "/operation/v1/post/comment": {
+        "get": {
+          "summary": "帖子评论",
+          "operationId": "getPostCommentList",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/GetPostCommentListResp"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "postId",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "sort default=score|desc",
+              "in": "query",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "comment"
+          ]
+        },
+        "post": {
+          "summary": "添加评论",
+          "operationId": "addPostComment",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AddPostCommentReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "comment"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/reply": {
+        "get": {
+          "summary": "帖子评论回复",
+          "operationId": "getPostCommentReplyList",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {
+                "$ref": "#/definitions/GetPostCommentReplyListResp"
+              }
+            }
+          },
+          "parameters": [
+            {
+              "name": "postId",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "commentId",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "name": "sort default=score|desc",
+              "in": "query",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            },
+            {
+              "name": "required",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32"
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "comment"
+          ]
+        },
+        "post": {
+          "summary": "添加评论回复",
+          "operationId": "addPostCommentReply",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AddPostCommentReplyReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "comment"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/reply/thumb/down": {
+        "post": {
+          "summary": "帖子回复评论点踩",
+          "operationId": "handlePostCommentReplyThumbDown",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/HandlePostCommentReplyThumbDownReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "thumb"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/reply/thumb/up": {
+        "post": {
+          "summary": "帖子回复评论点赞",
+          "operationId": "handlePostCommentReplyThumbUp",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/HandlePostCommentReplyThumbUpReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "thumb"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/reply/{id}": {
+        "delete": {
+          "summary": "删除评论回复",
+          "operationId": "deletePostCommentReply",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeletePostCommentReplyReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "comment"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/thumb/down": {
+        "post": {
+          "summary": "帖子评论点踩",
+          "operationId": "handlePostCommentThumbDown",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/HandlePostCommentThumbDownReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "thumb"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/thumb/up": {
+        "post": {
+          "summary": "帖子评论点赞",
+          "operationId": "handlePostCommentThumbUp",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/HandlePostCommentThumbUpReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "thumb"
+          ]
+        }
+      },
+      "/operation/v1/post/comment/{id}": {
+        "delete": {
+          "summary": "删除评论",
+          "operationId": "deletePostComment",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/DeletePostCommentReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "comment"
+          ]
+        }
+      },
+      "/operation/v1/post/share": {
+        "post": {
+          "summary": "分享",
+          "operationId": "addPostShare",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/AddPostShareReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "share"
+          ]
+        }
+      },
+      "/operation/v1/post/thumb/down": {
+        "post": {
+          "summary": "帖子点踩",
+          "operationId": "handlePostThumbDown",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/HandlePostThumbDownReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "thumb"
+          ]
+        }
+      },
+      "/operation/v1/post/thumb/up": {
+        "post": {
+          "summary": "帖子点赞",
+          "operationId": "handlePostThumbUp",
+          "responses": {
+            "200": {
+              "description": "A successful response.",
+              "schema": {}
+            }
+          },
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/HandlePostThumbUpReq"
+              }
+            }
+          ],
+          "requestBody": {},
+          "tags": [
+            "thumb"
+          ]
+        }
+      }
+    },
+    "definitions": {
+      "AddCollectionGroup": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "integer",
+            "format": "int32",
+            "default": "1"
+          },
+          "bizType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "AddCollectionGroup",
+        "required": [
+          "name",
+          "visibility",
+          "bizType"
+        ]
+      },
+      "AddCollectionReq": {
+        "type": "object",
+        "properties": {
+          "targetId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "groupId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "AddCollectionReq",
+        "required": [
+          "targetId",
+          "groupId"
+        ]
+      },
+      "AddPostCommentReplyReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "atUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "title": "AddPostCommentReplyReq",
+        "required": [
+          "postId",
+          "commentId",
+          "atUserId",
+          "content"
+        ]
+      },
+      "AddPostCommentReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "title": "AddPostCommentReq",
+        "required": [
+          "postId",
+          "content"
+        ]
+      },
+      "AddPostShareReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "AddPostShareReq",
+        "required": [
+          "postId",
+          "type"
+        ]
+      },
+      "ArticleItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "category": {
+            "$ref": "#/definitions/CollectionCategory"
+          },
+          "tag": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "desc": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "coverImage": {
+            "type": "string"
+          },
+          "creator": {
+            "$ref": "#/definitions/CollectionUser"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "visibility": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isTop": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "collectionCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "likeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dislikeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "shareCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastReplyTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updatedAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "ArticleItem",
+        "required": [
+          "id",
+          "category",
+          "tag",
+          "title",
+          "desc",
+          "content",
+          "coverImage",
+          "creator",
+          "status",
+          "visibility",
+          "isTop",
+          "score",
+          "commentCount",
+          "collectionCount",
+          "likeCount",
+          "dislikeCount",
+          "shareCount",
+          "lastReplyTime",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "ArticleResp": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ArticleItem"
+            }
+          },
+          "isEnd": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "ArticleResp",
+        "required": [
+          "list",
+          "isEnd",
+          "total"
+        ]
+      },
+      "CollectionCategory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "quoteCount": {
+            "type": "string"
+          }
+        },
+        "title": "CollectionCategory",
+        "required": [
+          "id",
+          "name",
+          "image",
+          "description",
+          "quoteCount"
+        ]
+      },
+      "CollectionGroupItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bizType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updatedAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "CollectionGroupItem",
+        "required": [
+          "id",
+          "creatorId",
+          "name",
+          "visibility",
+          "bizType",
+          "createdAt",
+          "updatedAt",
+          "count"
+        ]
+      },
+      "CollectionUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isFollowing": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "weChat": {
+            "type": "string"
+          },
+          "motto": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "profession": {
+            "type": "string"
+          },
+          "profileBg": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32",
+            "default": "1"
+          },
+          "location": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "mailStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastLoginTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updatedAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "CollectionUser",
+        "required": [
+          "id",
+          "isFollowing",
+          "roleId",
+          "nickname",
+          "email",
+          "weChat",
+          "motto",
+          "avatar",
+          "profession",
+          "profileBg",
+          "age",
+          "gender",
+          "location",
+          "address",
+          "status",
+          "level",
+          "score",
+          "mailStatus",
+          "lastLoginTime",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "DeleteCollectionGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "DeleteCollectionGroup",
+        "required": [
+          "id"
+        ]
+      },
+      "DeleteCollectionReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "DeleteCollectionReq",
+        "required": [
+          "id"
+        ]
+      },
+      "DeletePostCommentReplyReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "DeletePostCommentReplyReq",
+        "required": [
+          "id"
+        ]
+      },
+      "DeletePostCommentReq": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "DeletePostCommentReq",
+        "required": [
+          "id"
+        ]
+      },
+      "GetCollectionGropListResp": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/CollectionGroupItem"
+            }
+          },
+          "isEnd": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "GetCollectionGropListResp",
+        "required": [
+          "list",
+          "isEnd",
+          "total"
+        ]
+      },
+      "GetCollectionGroupListReq": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "bizType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "creatorId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "GetCollectionGroupListReq",
+        "required": [
+          "creatorId",
+          "pageNum",
+          "required",
+          "pageSize"
+        ]
+      },
+      "GetCollectionListReq": {
+        "type": "object",
+        "properties": {
+          "groupId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "bizType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "GetCollectionListReq",
+        "required": [
+          "groupId",
+          "bizType",
+          "pageNum",
+          "required",
+          "pageSize"
+        ]
+      },
+      "GetCollectionListResp": {
+        "type": "object",
+        "properties": {
+          "post": {
+            "$ref": "#/definitions/PostResp"
+          },
+          "article": {
+            "$ref": "#/definitions/ArticleResp"
+          }
+        },
+        "title": "GetCollectionListResp",
+        "required": [
+          "post",
+          "article"
+        ]
+      },
+      "GetPostCommentListReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort default=score|desc": {
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "GetPostCommentListReq",
+        "required": [
+          "postId",
+          "sort default=score|desc",
+          "pageNum",
+          "required",
+          "pageSize"
+        ]
+      },
+      "GetPostCommentListResp": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PostCommentItem"
+            }
+          },
+          "isEnd": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "GetPostCommentListResp",
+        "required": [
+          "list",
+          "isEnd",
+          "total"
+        ]
+      },
+      "GetPostCommentReplyListReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort default=score|desc": {
+            "type": "string"
+          },
+          "pageNum": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "GetPostCommentReplyListReq",
+        "required": [
+          "postId",
+          "commentId",
+          "sort default=score|desc",
+          "pageNum",
+          "required",
+          "pageSize"
+        ]
+      },
+      "GetPostCommentReplyListResp": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PostCommentReplyItem"
+            }
+          },
+          "isEnd": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "GetPostCommentReplyListResp",
+        "required": [
+          "list",
+          "isEnd",
+          "total"
+        ]
+      },
+      "HandlePostCommentReplyThumbDownReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "replyId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "HandlePostCommentReplyThumbDownReq",
+        "required": [
+          "postId",
+          "commentId",
+          "replyId"
+        ]
+      },
+      "HandlePostCommentReplyThumbUpReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "replyId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "HandlePostCommentReplyThumbUpReq",
+        "required": [
+          "postId",
+          "commentId",
+          "replyId"
+        ]
+      },
+      "HandlePostCommentThumbDownReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "HandlePostCommentThumbDownReq",
+        "required": [
+          "postId",
+          "commentId"
+        ]
+      },
+      "HandlePostCommentThumbUpReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "HandlePostCommentThumbUpReq",
+        "required": [
+          "postId",
+          "commentId"
+        ]
+      },
+      "HandlePostThumbDownReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "HandlePostThumbDownReq",
+        "required": [
+          "postId"
+        ]
+      },
+      "HandlePostThumbUpReq": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "HandlePostThumbUpReq",
+        "required": [
+          "postId"
+        ]
+      },
+      "PostCommentItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorName": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "likeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dislikeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "location": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "PostCommentItem",
+        "required": [
+          "id",
+          "postId",
+          "creatorId",
+          "creatorName",
+          "content",
+          "likeCount",
+          "dislikeCount",
+          "score",
+          "location",
+          "createdAt"
+        ]
+      },
+      "PostCommentReplyItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "commentId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "postId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "creatorName": {
+            "type": "string"
+          },
+          "atUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "atUserName": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "likeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dislikeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "location": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "PostCommentReplyItem",
+        "required": [
+          "id",
+          "commentId",
+          "postId",
+          "creatorId",
+          "creatorName",
+          "atUserId",
+          "atUserName",
+          "content",
+          "likeCount",
+          "dislikeCount",
+          "score",
+          "location",
+          "createdAt"
+        ]
+      },
+      "PostItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "category": {
+            "$ref": "#/definitions/CollectionCategory"
+          },
+          "topic": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "content": {
+            "type": "string"
+          },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "creator": {
+            "$ref": "#/definitions/CollectionUser"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "visibility": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isTop": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "score": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "location": {
+            "type": "string"
+          },
+          "commentCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "collectionCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "likeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "dislikeCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "shareCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastReplyTime": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "updatedAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "PostItem",
+        "required": [
+          "id",
+          "category",
+          "topic",
+          "content",
+          "images",
+          "creator",
+          "status",
+          "visibility",
+          "isTop",
+          "score",
+          "location",
+          "commentCount",
+          "collectionCount",
+          "likeCount",
+          "dislikeCount",
+          "shareCount",
+          "lastReplyTime",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "PostResp": {
+        "type": "object",
+        "properties": {
+          "list": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/PostItem"
+            }
+          },
+          "isEnd": {
+            "type": "boolean",
+            "format": "boolean"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "title": "PostResp",
+        "required": [
+          "list",
+          "isEnd",
+          "total"
+        ]
+      },
+      "UpdateCollectionGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "integer",
+            "format": "int32",
+            "default": "1"
+          },
+          "bizType": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "title": "UpdateCollectionGroup",
+        "required": [
+          "id",
+          "name",
+          "visibility",
+          "bizType"
+        ]
+      }
+    },
+    "securityDefinitions": {
+      "apiKey": {
+        "type": "apiKey",
+        "description": "Enter JWT Bearer token **_only_**",
+        "name": "Authorization",
+        "in": "header"
+      }
+    },
+    "security": [
+      {
+        "apiKey": []
+      }
+    ]
+  }
+  
