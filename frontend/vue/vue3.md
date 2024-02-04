@@ -1,6 +1,6 @@
 
 ## Vue2到Vue3的一个变化
-vue2不再使用new Vue({el: '#app'})的方式实例化一个实例，而是采用createApp({})的方式创建， 并且createApp还一处了filter、$on、$off、$set、$delete等API
+vue2不再使用new Vue({el: '#app'})的方式实例化一个实例，而是采用createApp({})的方式创建， 并且createApp还移除了filter、$on、$off、$set、$delete等API
 
 ## 插槽
 
