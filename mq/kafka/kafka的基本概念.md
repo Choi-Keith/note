@@ -42,3 +42,44 @@ Kafka删除消息是通过日志段（Log Segment）机制。在 Kafka 底层，
 ## 消息模型
 - 点对点模型：同一条消息只能被下游的一个消费者消费，其它消费者不能染指
 - 消费者位移(Consumer Offset): 每个消费者在消费消息的过程中必然需要有个字段记录它当前消费到了分区的哪个位置上, 这个字段就是消费者位移。
+
+## 参数
+
+### Broker端参数
+
+- log.dirs: 指定了Broker需要使用地若干个文件目录路径
+- log.dir: 指定Broker使用地单个路径    
+这两个参数应该怎么设置呢？很简单，你只要设置log.dirs，即第一个参数就好了，不要设置log.dir。而且重要的是，在线上生产环境中一定要log.dirs配置多个路径，具体格式是一个 CSV 格式，也就是用逗号分隔的多个路径，比如/home/kafka1,/home/kafka2,/home/kafka3这样。如果有条件地话最好保证这些目录挂载到不同地物理磁盘上，这样做有两个好处：     
+
+
+提升读写性能：比起单块磁盘，多块物理磁盘同时读写数据有更高的吞吐量。        
+能够实现故障转移：即 Failover。这是 Kafka 1.1 版本新引入的强大功能。要知道在以前，只要 Kafka Broker 使用的任何一块磁盘挂掉了整个 Broker 进程都会关闭。但是自 1.1 开始，这种情况被修正了，坏掉的磁盘上的数据会自动地转移到其他正常的磁盘上，而且 Broker 还能正常工作。还记得上一期我们关于 Kafka 是否需要使用RAID 的讨论吗？这个改进正是我们舍弃 RAID 方案的基础：没有这种 Failover 的话，我们只能依靠 RAID 来提供保障。
+
+Broker 连接相关的，即客户端程序或其他Broker如何与该 Broker 进行通信的设置。有以下三个参数：
+- listeners: 告诉外部连接者要通过什么协议访问指定主机名和端口开放的 Kafka 服务。
+- advertised.listeners: 对外公布地监听器
+- host.name/port: 主机名和端口    
+
+
+关于 Topic 管理的。我来讲讲下面这三个参数：
+- auto.create.topics.enable: 是否允许自动创建topic，一般设置为false
+- unclean.leader.election.enable: 是否允许Unclean Leader选举, 如果设置为false，则不允许数据量太少地副本参加竞选leader副本；如果是true的话，则允许，但这有可能会导致数据丢失。
+- auto.leader.rebalance.enable: 是否允许定期进行Leader更换    
+
+关于数据留存方面的参数:
+- log.retention.{hour|minutes|ms}: 控制一条数据被保存多长时间。从优先级来说ms设置最高，minutes次之，hour最低，但是一般设置hour的级别比较多
+- log.retention.bytes: 指定Broker为消息保存的总磁盘大小，默认值为-1, 表示在这台Broker上保存多少数据都可以。
+- message.max.bytes: 控制Broker能够接收的最大消息大小    
+
+关于Zookeeper相关设置：
+首先Zookeeper是一个分布式协调框架，负责协调管理并保存Kafka集群的所有元数据信息，比如集群都有哪些Broker在运行、创建了哪些Topic, 每个Topic都有多少分区以及分区的Leader副本都在哪些机器上等信息。
+
+Kafka 与 ZooKeeper 相关的最重要的参数当属`zookeeper.connect`。这也是一个 CSV 格式的参数，比如我可以指定它的值为zk1:2181,zk2:2181,zk3:2181。2181 是 ZooKeeper的默认端口。    
+
+如果我让多个 Kafka 集群使用同一套ZooKeeper 集群，那么这个参数应该怎么设置呢？这时候chroot 就派上用场了。这个 chroot 是 ZooKeeper 的概念，类似于别名。如果你有两套 Kafka 集群，假设分别叫它们 kafka1 和kafka2，那么两套集群的zookeeper.connect参数可以这样指定：zk1:2181,zk2:2181,zk3:2181/kafka1和zk1:2181,zk2:2181,zk3:2181/kafka2。切记 chroot只需要写一次，而且是加到最后的。
+
+### Topic级别参数
+
+如果同时设置了 Topic 级别参数和全局 Broker 参数，到底听谁的呢？哪个说了算呢？答案就是 Topic 级别参数会覆盖全局Broker 参数的值，而每个 Topic 都能设置自己的参数值，这就是所谓的 Topic 级别参数   
+
+
